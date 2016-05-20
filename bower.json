@@ -1,0 +1,21 @@
+{
+  "name": "static-server",
+  "main": "index.js",
+  "authors": [
+    "johnnynode@gmail.com"
+  ],
+  "description": "一个自己开发的静态文件服务",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "artTemplate": "^3.0.1"
+  }
+}
