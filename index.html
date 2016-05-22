@@ -133,7 +133,7 @@
     }
   </style>
 
-  <title id="title">C:\Users\iroc\Documents\bdcloud\static-docs\ 的索引</title>
+  <title id="title">静态服务文件的索引</title>
 
 </head>
 <body>
@@ -144,34 +144,28 @@
 
 <span id="parentDirText" style="display:none" i18n-content="parentDirText">[上级目录]</span>
 
-<h1 id="header" i18n-content="header">C:\Users\iroc\Documents\bdcloud\static-docs\ 的索引</h1>
+<h1 id="header" i18n-content="header"></h1>
 
 <table id="table">
   <tbody>
 
   <tr class="header">
     <td i18n-content="headerName">名称</td>
-    <td class="detailsColumn" i18n-content="headerSize">大小</td>
-    <td class="detailsColumn" i18n-content="headerDateModified">修改日期</td>
   </tr>
   </tbody>
   <tr>
-    <td><a class="icon up" href="/C:/Users/iroc/Documents/bdcloud/static-docs/..">[上级目录]</a></td>
-    <td class="detailsColumn"></td>
-    <td class="detailsColumn"></td>
+    <td><a class="icon up" href="../">[上级目录]</a></td>
   </tr>
 
-  <!--  这里是art-template 渲染的一部分 -->
+  <!--  这里是art-template 渲染 开始 -->
 
   {{each dirs as value i}}
     <tr>
-      <td><a class="icon dir" href="/{{value}}">{{value}}/</a></td>
-      <td class="detailsColumn"></td>
-      <td class="detailsColumn">16/2/7 下午5:11:54</td>
+      <td><a class="icon dir" href="/{{value.href}}">{{value.name}}/</a></td>
     </tr>
   {{/each}}
 
-  <!--  这里是art-template 渲染的一部分 -->
+  <!--  这里是art-template 渲染 结束 -->
 
 
 </table>

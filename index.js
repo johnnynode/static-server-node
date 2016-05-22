@@ -1,48 +1,25 @@
 "use strict";
 
 const http = require('http');
-const fs = require('fs');
-const path = require('path');
-
-const template = require('art-template');
 const server = http.createServer();
+const path = require('path');
+const handler = require('./handler');
+const rootDir = path.join(__dirname,'public');
+
 server.on('request',(req,res) => {
   let url = req.url;
   if(url === '/'){
-    fs.readFile(path.join(__dirname,'index.html'),'utf8',(err,data) => {
-      if(err) {
-        return console.log(err);
-      }
-      fs.readdir(path.join(__dirname,'public'),(err,files) => {
-        if(err){
-          return res.end(e.message);
-        }
-        let dirs = [];
-        files.forEach((item) =>{
-          if(fs.statSync(path.join(__dirname,'public',item)).isDirectory()){
-            dirs.push({
-              src:'/'+item,
-              dirName:item,
-              type:'dir'
-            });
-          } else if (fs.statSync(path.join(__dirname,'public',item)).isFile()){
-            dirs.push({
-              src:'/'+item,
-              dirName:item,
-              type:'file'
-            });
-          }
-        })
-
-        let compileFunc = template.render(data);
-        let resHtml = compileFunc({
-          dirs:dirs
-        });
-        res.end(resHtml);
-      })
-    })
+    // 如果访问的是根目录，那么，把首页渲染出来，把public路径下的内容读出来，用index.html文件去渲染。
+    handler.handleDir(rootDir,res);
+  }else if(url.includes('.')){
+    // 处理文件的逻辑
+    //handler.handleFile();
+  }else{
+    // 处理文件夹的逻辑
+    handler.handleDir(path.join(rootDir,url),res);
   }
 });
+
 server.listen(3000,() => {
   console.log("server is on");
 })
